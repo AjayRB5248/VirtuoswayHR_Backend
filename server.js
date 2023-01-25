@@ -25,6 +25,9 @@ app.use(
     useTempFiles: true,
   })
 );
+app.get('/',(req,res)=>{
+  res.send('Server Started...')
+  })
 
 app.listen(port, () => {
   console.log("Server Started");
