@@ -11,6 +11,7 @@ const fileUpload = require("express-fileupload");
 dotenv.config({ path: "./config.env" });
 
 require("./db/db");
+app.use("/public",express.static('public'));
 app.use(express.json());
 app.use(cors());
 
