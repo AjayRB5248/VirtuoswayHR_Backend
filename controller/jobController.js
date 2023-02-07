@@ -35,9 +35,8 @@ const createJob = async (req, res) => {
 
 const getJobs = async (req, res) => {
   try {
-    const jobs = await jobModel.find({}).sort({ createdAt: -1 });
-    const Count = await jobModel.countDocuments({});
-
+   const allJobs = await jobModel.find({}).sort({ createdAt: -1 })
+    const jobs = allJobs.filter((item) => item.status === 'open')
     res.status(200).json({ message: "Jobs Fetched Succesfully", jobs, Count });
   } catch (e) {
     res.status(400).json({ message: "Something Went Wrong", e });
